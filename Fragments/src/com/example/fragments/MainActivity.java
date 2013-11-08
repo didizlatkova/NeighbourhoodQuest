@@ -11,7 +11,6 @@ import android.widget.EditText;
 
 public class MainActivity extends FragmentActivity {
 	
-// didi was here
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
