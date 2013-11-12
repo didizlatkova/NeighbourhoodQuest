@@ -29,10 +29,12 @@ public class MainActivity extends FragmentActivity {
 			
 			WelcomeFragment welcomeFragment = new WelcomeFragment();
 			welcomeFragment.setRetainInstance(false);
-			//welcomeFragment.start();
+			Bundle bundle=new Bundle();
+			bundle.putString("username", username);
+			welcomeFragment.setArguments(bundle);
 			FragmentManager manager = getSupportFragmentManager();
-			FragmentTransaction fragmentTransaction = manager.beginTransaction();
-			fragmentTransaction.add(welcomeFragment, "green");
+			FragmentTransaction fragmentTransaction = manager.beginTransaction();			
+			fragmentTransaction.replace(R.id.fragment_container, welcomeFragment);
 			fragmentTransaction.commit();
 		}
 	};
