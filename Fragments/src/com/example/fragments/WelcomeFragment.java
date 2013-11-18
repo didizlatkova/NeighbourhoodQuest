@@ -1,5 +1,7 @@
 package com.example.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,8 +12,12 @@ import android.widget.TextView;
 public class WelcomeFragment extends Fragment {
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
+	public void onStart() {
+		super.onStart();		
+		SharedPreferences sharedPreferences = getActivity().getPreferences(0);
+		TextView textView = (TextView) getView().findViewById(R.id.welcomeMessage);
+        
+		textView.setText("Welcome, " + sharedPreferences.getString("username", null) + "!");
 	}
 	
 	@Override
@@ -19,11 +25,13 @@ public class WelcomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		
-		Bundle bundle = getArguments(); 
-		TextView view = (TextView) getView().findViewById(R.id.welcomeMessage);
-		view.setText("Welcome, " + bundle.getString("username") + "!");
-		
+
+
+	
+		View view= inflater.inflate(R.layout.welcome, container, false);
+
+         
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.welcome, container, false);
+        return view;
     }
 }

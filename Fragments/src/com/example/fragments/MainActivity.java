@@ -1,5 +1,6 @@
 package com.example.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -29,9 +30,12 @@ public class MainActivity extends FragmentActivity {
 			
 			WelcomeFragment welcomeFragment = new WelcomeFragment();
 			welcomeFragment.setRetainInstance(false);
-			Bundle bundle=new Bundle();
-			bundle.putString("username", username);
-			welcomeFragment.setArguments(bundle);
+			
+			SharedPreferences sharedPreferences = getPreferences(0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("username", username);
+            editor.commit();
+			
 			FragmentManager manager = getSupportFragmentManager();
 			FragmentTransaction fragmentTransaction = manager.beginTransaction();			
 			fragmentTransaction.replace(R.id.fragment_container, welcomeFragment);
