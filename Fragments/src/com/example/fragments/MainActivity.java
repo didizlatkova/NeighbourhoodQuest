@@ -38,7 +38,7 @@ public class MainActivity extends FragmentActivity {
 			
 			FragmentManager manager = getSupportFragmentManager();
 			FragmentTransaction fragmentTransaction = manager.beginTransaction();			
-			fragmentTransaction.replace(R.id.fragment_container, welcomeFragment);
+			fragmentTransaction.add(welcomeFragment, null);
 			fragmentTransaction.commit();
 		}
 	};
